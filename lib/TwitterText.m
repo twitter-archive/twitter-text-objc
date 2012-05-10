@@ -634,11 +634,13 @@ static NSRegularExpression *endMentionRegexp;
 
 + (int)remainingCharacterCount:(NSString*)text
 {
+/*
     return [self remainingCharacterCount:text httpURLLength:HTTPShortURLLength httpsURLLength:HTTPSShortURLLength];
 }
 
 + (int)remainingCharacterCount:(NSString*)text httpURLLength:(int)httpURLLength httpsURLLength:(int)httpsURLLength
 {
+*/
     text = [text precomposedStringWithCanonicalMapping];
     
     if (!text.length) {
@@ -657,11 +659,14 @@ static NSRegularExpression *endMentionRegexp;
         TwitterTextEntity *entity = [urlEntities objectAtIndex:i];
         NSRange urlRange = entity.range;
         NSString *url = [string substringWithRange:urlRange];
+        /*
         if ([url rangeOfString:@"https" options:NSCaseInsensitiveSearch | NSAnchoredSearch].location == 0) {
             urlLengthOffset += httpsURLLength;
         } else {
             urlLengthOffset += httpURLLength;
         }
+        */
+        urlLengthOffset += url.length;
         [string deleteCharactersInRange:urlRange];
     }
     
