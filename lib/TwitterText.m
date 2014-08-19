@@ -17,7 +17,7 @@
 //
 // These regular expressions are ported from twitter-text-rb on Apr 24 2012.
 //
-
+#define TWUGreekHashtagChars        @"\\u0370-\\u03FF"
 #define TWUControlCharacters        @"\\u0009-\\u000D"
 #define TWUSpace                    @"\\u0020"
 #define TWUControl85                @"\\u0085"
@@ -76,6 +76,7 @@
 #define TWUHalfWidthHangulHashtagChars              @"\\uFFA1-\\uFFDC"
 
 #define TWUNonLatinHashtagChars \
+    TWUGreekHashtagChars \
     TWUCyrillicHashtagChars \
     TWUCyrillicSupplementHashtagChars \
     TWUCyrillicExtendedAHashtagChars \
