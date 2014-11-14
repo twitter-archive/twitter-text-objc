@@ -1168,6 +1168,13 @@
     ],
     "hashtags": [
       {
+        "description": "Extract mid-dot hashtag",
+        "text": "a #ビ·ル•ゲ・イ･ツ",
+        "expected": [
+          "ビ·ル•ゲ・イ･ツ"
+        ]
+      },
+      {
         "description": "Extract an all-alpha hashtag",
         "text": "a #hashtag here",
         "expected": [

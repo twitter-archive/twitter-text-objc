@@ -53,6 +53,16 @@
 //
 // Hashtag
 //
+#define TWUMiddleDot                    @"\\u00B7"
+#define TWUBullet                       @"\\u2022"
+#define TWUKatakanaMiddleDot            @"\\u30FB"
+#define TWUHalfwidthKatakanaMiddleDot   @"\\uff65"
+
+#define TWUSpecialCharsIncluded \
+    TWUMiddleDot \
+    TWUBullet \
+    TWUKatakanaMiddleDot \
+    TWUHalfwidthKatakanaMiddleDot
 
 #define TWUCyrillicHashtagChars                     @"\\u0400-\\u04FF"
 #define TWUCyrillicSupplementHashtagChars           @"\\u0500-\\u0527"
@@ -137,6 +147,7 @@
     TWULatinAccents \
     TWUNonLatinHashtagChars \
     TWUCJKHashtagCharacters \
+    TWUSpecialCharsIncluded \
 @"]"
 
 #define TWUHashtagBoundaryInvalidChars \
