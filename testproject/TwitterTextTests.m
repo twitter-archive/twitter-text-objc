@@ -36,7 +36,7 @@
     XCTAssertEqual(entities.count, (NSUInteger)0);
 }
 
-- (void)testUnofficialRT
+- (void)testUnofficialRTWithColon
 {
     NSArray *entities = [TwitterText entitiesInText:@"RT:@username"];
     XCTAssertEqual(entities.count, (NSUInteger)1);
@@ -46,23 +46,25 @@
     }
 }
 
-- (void)testUnofficialRTInBeginning
+- (void)testUnofficialRTsWithoutSpaces
 {
-    NSArray *entities = [TwitterText entitiesInText:@"RT@username"];
-    XCTAssertEqual(entities.count, (NSUInteger)1);
-    if (entities.count > 0) {
-        TwitterTextEntity *entity = [entities firstObject];
-        XCTAssertEqual(NSStringFromRange(entity.range), NSStringFromRange(NSMakeRange(2, 9)));
+    NSArray *entities = [TwitterText entitiesInText:@"そうそう。RT@usernameそうだよね。RT:@username"];
+    XCTAssertEqual(entities.count, (NSUInteger)2);
+    if (entities.count == 2) {
+        TwitterTextEntity *firstEntity = entities[0];
+        XCTAssertEqual(NSStringFromRange(firstEntity.range), NSStringFromRange(NSMakeRange(7, 9)));
+        TwitterTextEntity *secondEntity = entities[1];
+        XCTAssertEqual(NSStringFromRange(secondEntity.range), NSStringFromRange(NSMakeRange(25, 9)));
     }
 }
 
-- (void)testUnofficialRTWithPrecedingSpaces
+- (void)testUnofficialRTWithPrecedingIdeographicSpace
 {
-    NSArray *entities = [TwitterText entitiesInText:@"  RT@username"];
+    NSArray *entities = [TwitterText entitiesInText:@"　RT@username"];
     XCTAssertEqual(entities.count, (NSUInteger)1);
     if (entities.count > 0) {
         TwitterTextEntity *entity = [entities firstObject];
-        XCTAssertEqual(NSStringFromRange(entity.range), NSStringFromRange(NSMakeRange(4, 9)));
+        XCTAssertEqual(NSStringFromRange(entity.range), NSStringFromRange(NSMakeRange(3, 9)));
     }
 }
 
